@@ -7,9 +7,7 @@ const sketch = (p5: P5) => {
     const walker = PerlinWalker({p5, width, height});
 
     p5.setup = () => {
-        const canvas = p5.createCanvas(width, height);
-
-        canvas.parent('p5app');
+        p5.createCanvas(width, height);
     };
 
     p5.draw = () => {
@@ -27,4 +25,4 @@ const sketch = (p5: P5) => {
     };
 };
 
-new P5(sketch);
+new P5(sketch, document.getElementById('p5app'));
