@@ -29,4 +29,4 @@ const sketch = (p5: P5) => {
     };
 };
 
-new P5(sketch, document.getElementById('p5app'));
+new P5(sketch);

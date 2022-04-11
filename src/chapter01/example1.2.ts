@@ -4,8 +4,8 @@ const sketch = (p5: P5) => {
     const width = 200;
     const height = 200;
 
-    let location = p5.createVector(100, 100);
-    let velocity = p5.createVector(2.5, 5);
+    const location = p5.createVector(100, 100);
+    const velocity = p5.createVector(2.5, 5);
 
     p5.setup = () => {
         const canvas = p5.createCanvas(width, height);
