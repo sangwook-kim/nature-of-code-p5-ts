@@ -1,16 +1,18 @@
 import P5 from 'p5';
 import Mover, {TMoverState} from './FunctionalMover';
 
-const ConstantVMover = (p5: P5, {width, height}) => {
+const RandomAMover = (p5: P5, {width, height}) => {
     const movers = Mover(p5);
-    const cMovers = [];
+    const rMovers = [];
+    let tx = 0.1;
+    let ty = 0.001;
 
     const create = () => {
         const initialValue: TMoverState = {
             location: p5.createVector(p5.random(0, width), p5.random(0, height)),
             velocity: p5.createVector(p5.random(-2, 2), p5.random(-2, 2)),
         };
-        cMovers.push(movers.useState(initialValue));
+        rMovers.push(movers.useState(initialValue));
     };
 
     const handleEdges = (location: P5.Vector) => {
@@ -28,10 +30,19 @@ const ConstantVMover = (p5: P5, {width, height}) => {
     };
 
     const update = () => {
-        cMovers.forEach((cMover) => {
-            const [moverState, setMoverState] = cMover;
+        rMovers.forEach((rMover) => {
+            const [moverState, setMoverState] = rMover;
             const {location, velocity} = moverState;
-            const newLocation = location.add(velocity);
+
+            const accelation = p5.createVector(
+                p5.map(p5.noise(tx), 0, 1, -4, 4),
+                p5.map(p5.noise(ty), 0, 1, -4, 4),
+            );
+            tx += 0.01;
+            ty += 0.01;
+            const newVelocity = P5.Vector.add(velocity, accelation);
+
+            const newLocation = location.add(newVelocity);
             handleEdges(newLocation);
 
             setMoverState({
@@ -46,4 +57,4 @@ const ConstantVMover = (p5: P5, {width, height}) => {
     return {create, update};
 };
 
-export default ConstantVMover;
+export default RandomAMover;

@@ -1,10 +1,10 @@
 import P5 from 'p5';
-import NoiseMover from './NoiseAccelerationMover';
+import RandomMover from './RandomAccelerationMover';
 
 const sketch = (p5: P5) => {
     const width = 200;
     const height = 200;
-    const movers = NoiseMover(p5, {width, height});
+    const movers = RandomMover(p5, {width, height});
 
     p5.setup = () => {
         const canvas = p5.createCanvas(width, height);
