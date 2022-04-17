@@ -1,5 +1,5 @@
 import P5 from 'p5';
-import Mover, {TMoverState} from './FunctionalMover';
+import Mover from './FunctionalMover';
 
 const RandomAMover = (p5: P5, {width, height}) => {
     const movers = Mover(p5);
@@ -8,7 +8,7 @@ const RandomAMover = (p5: P5, {width, height}) => {
     let ty = 0.001;
 
     const create = () => {
-        const initialValue: TMoverState = {
+        const initialValue = {
             location: p5.createVector(p5.random(0, width), p5.random(0, height)),
             velocity: p5.createVector(p5.random(-2, 2), p5.random(-2, 2)),
         };

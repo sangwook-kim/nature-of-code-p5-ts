@@ -7,17 +7,17 @@ const sketch = (p5: P5) => {
     p5.setup = () => {
         const canvas = p5.createCanvas(width, height);
         canvas.parent('p5app');
-    };
 
-    p5.draw = () => {};
-
-    p5.mousePressed = () => {
-        if (p5.isLooping()) {
+        window.onblur = () => {
             p5.noLoop();
-        } else {
+        };
+
+        window.onfocus = () => {
             p5.loop();
-        }
+        };
     };
+
+    // p5.draw = () => {};
 };
 
 new P5(sketch);

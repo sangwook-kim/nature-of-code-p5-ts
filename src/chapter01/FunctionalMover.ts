@@ -1,17 +1,12 @@
 import P5 from 'p5';
 
-export type TMoverState = {
-    location: P5.Vector;
-    velocity: P5.Vector;
-};
-
 const Mover = (p5: P5) => {
     const movers = [];
-    // currentStateIndex: 0,
-    const useState = (initialValue: TMoverState) => {
+
+    const useState = (initialValue) => {
         const cMover = {
             value: initialValue,
-            setState(newValue: TMoverState) {
+            setState(newValue) {
                 cMover.value = newValue;
             },
         };

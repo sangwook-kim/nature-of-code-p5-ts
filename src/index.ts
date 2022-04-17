@@ -10,6 +10,14 @@ const sketch = (p5: P5) => {
         const canvas = p5.createCanvas(width, height);
         canvas.parent('p5app');
 
+        window.onblur = () => {
+            p5.noLoop();
+        };
+
+        window.onfocus = () => {
+            p5.loop();
+        };
+
         movers.create();
         movers.create();
     };
@@ -18,14 +26,6 @@ const sketch = (p5: P5) => {
         p5.background(255, 16);
 
         movers.update();
-    };
-
-    p5.mousePressed = () => {
-        if (p5.isLooping()) {
-            p5.noLoop();
-        } else {
-            p5.loop();
-        }
     };
 };
 
