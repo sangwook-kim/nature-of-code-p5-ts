@@ -3,10 +3,10 @@ import P5 from 'p5';
 const Mover = (p5: P5) => {
     const movers = [];
 
-    const useState = (initialValue) => {
+    const useState = <T>(initialValue: T) => {
         const cMover = {
             value: initialValue,
-            setState(newValue) {
+            setState(newValue: T) {
                 cMover.value = newValue;
             },
         };
